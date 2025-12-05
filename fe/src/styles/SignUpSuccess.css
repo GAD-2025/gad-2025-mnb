@@ -1,0 +1,79 @@
+.success-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #FFFFFF;
+  padding: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.success-card {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  padding: 40px 28px;
+  border-radius: 12px;
+  background-color: #FFFFFF;
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
+}
+
+.success-badge {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #E6F4FF 0%, #DFF0FF 100%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px auto;
+  box-shadow: 0 6px 18px rgba(49, 130, 246, 0.12);
+}
+
+.success-title {
+  font-size: 22px;
+  color: #0F172A;
+  margin: 6px 0 6px 0;
+  font-weight: 700;
+}
+
+.success-sub {
+  font-size: 14px;
+  color: #6B7280;
+  margin: 0 0 20px 0;
+}
+
+.success-login-button {
+  background-color: #3182F6;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.18s ease;
+}
+
+.success-login-button:hover {
+  background-color: #2563EB;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(49,130,246,0.18);
+}
+
+/* 반응형 */
+@media (max-width: 480px) {
+  .success-card {
+    padding: 28px 16px;
+  }
+
+  .success-badge {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 14px;
+  }
+
+  .success-title {
+    font-size: 20px;
+  }
+}

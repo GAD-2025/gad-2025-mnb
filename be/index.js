@@ -6,6 +6,7 @@ app.get('/', (req, res) => {
   res.send('Hello from the backend!');
 });
 
+
 app.listen(port, () => {
   console.log(`Backend server listening at http://localhost:${port}`);
 });

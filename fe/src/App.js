@@ -1,16 +1,22 @@
 import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar';
-import Banner from './components/Banner';
-import ServiceDescription from './components/ServiceDescription';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SignUp from './components/SignUp';
+import Login from './components/Login';
+import SignUpSuccess from './components/SignUpSuccess';
+import Main from './components/Main';
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <Banner />
-      <ServiceDescription />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<SignUp />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signup/success" element={<SignUpSuccess />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/main" element={<Main />} />
+      </Routes>
+    </Router>
   );
 }
 
