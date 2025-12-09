@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>멍냥별 - 메인</title>
+    <link rel="stylesheet" href="MNBmain.css">
+    <!-- Chart.js 라이브러리 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- 아이콘 사용을 위한 Font Awesome 라이브러리 추가 -->
+    <script src="https://kit.fontawesome.com/a93175af5c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 1. 상단 위치 정보 -->
+        <header class="location-header">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>서울 강남구</span>
+        </header>
+
+        <!-- 2. 검색창 -->
+        <div class="search-bar">
+            <input type="text" placeholder="병원 이름, 지역, 진료과목 검색">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <!-- 3. 알림 카드 -->
+        <section class="notification-card">
+            <img src="https://i.pravatar.cc/80?img=3" alt="반려견 프로필" class="pet-profile-img">
+            <div class="notification-text">
+                <p>두두 예방접종 3차 예정이에요!</p>
+                <p class="highlight">다음 접종일 : 11월 15일</p>
+            </div>
+        </section>
+
+        <!-- 4. 건강 점수 (레이더 차트) -->
+        <section class="health-score">
+            <h2>오늘의 건강 점수</h2>
+            <div class="chart-container">
+                <canvas id="healthRadarChart"></canvas>
+                <div class="chart-legend">
+                    <!-- JS에서 동적으로 생성 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 인기 병원 TOP 10 -->
+        <section class="popular-hospitals">
+            <h2>인기 병원 TOP 10</h2>
+            <div class="hospital-list-container" id="hospital-list">
+                <!-- JS에서 동적으로 카드 생성 -->
+            </div>
+        </section>
+
+        <!-- 6. 최근 진료 내역 -->
+        <section class="recent-visits">
+            <h2>최근 진료 내역</h2>
+            <div class="visit-list-container" id="visit-list">
+                <!-- JS에서 동적으로 카드 생성 -->
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 7. 하단 네비게이션 바 -->
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active">
+            <i class="fa-solid fa-house"></i>
+            <span>홈</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fa-solid fa-truck-medical"></i>
+            <span>응급&병원</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fa-solid fa-book-medical"></i>
+            <span>건강수첩</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fa-regular fa-comments"></i>
+            <span>Q&A</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fa-regular fa-user"></i>
+            <span>MY</span>
+        </a>
+    </nav>
+
+    <script defer src="MNBmain.js"></script>
+</body>
+</html>

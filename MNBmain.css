@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+:root {
+    --primary-color: #2A68D4;
+    --background-color: #FFFFFF;
+    --container-bg-color: #F5F5F7;
+    --text-primary-color: #333333;
+    --text-secondary-color: #888888;
+    --border-radius-sm: 6px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 10px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-primary-color);
+    padding-bottom: 80px; /* 하단 네비게이션 높이만큼 여백 */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    padding: 16px;
+}
+
+h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+/* 1. 상단 위치 정보 */
+.location-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+.location-header i {
+    font-size: 16px;
+    color: var(--primary-color);
+}
+.location-header span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* 2. 검색창 */
+.search-bar {
+    position: relative;
+    margin-bottom: 20px;
+}
+.search-bar input {
+    width: 100%;
+    padding: 12px 40px 12px 16px;
+    border-radius: var(--border-radius-md);
+    background-color: var(--container-bg-color);
+    border: none;
+    font-size: 14px;
+}
+.search-bar input::placeholder {
+    color: var(--text-secondary-color);
+}
+.search-bar i {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary-color);
+}
+
+/* 3. 알림 카드 */
+.notification-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+}
+.pet-profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.notification-text p {
+    font-size: 14px;
+    line-height: 1.4;
+}
+.notification-text .highlight {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* 4. 건강 점수 */
+.health-score {
+    margin-bottom: 24px;
+}
+.chart-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px;
+    background-color: #FAFAFC;
+    border-radius: var(--border-radius-lg);
+}
+#healthRadarChart {
+    max-width: 200px;
+    max-height: 200px;
+}
+.chart-legend ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.chart-legend li {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+/* 5. 인기 병원 */
+.popular-hospitals {
+    margin-bottom: 24px;
+}
+.hospital-list-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding-bottom: 16px; /* 스크롤바 공간 */
+}
+/* 스크롤바 숨기기 */
+.hospital-list-container::-webkit-scrollbar {
+    display: none;
+}
+.hospital-card {
+    flex: 0 0 280px; /* 카드가 줄어들지 않도록 설정 */
+    padding: 16px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow);
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.hospital-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.hospital-info .name {
+    font-size: 16px;
+    font-weight: 700;
+}
+.hospital-info .details {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-secondary-color);
+}
+.details .star {
+    color: #FFD700;
+}
+.vet-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    background-color: var(--container-bg-color);
+    padding: 8px;
+    border-radius: var(--border-radius-sm);
+}
+.vet-info img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.review {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-secondary-color);
+    flex-grow: 1;
+}
+.quick-booking-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* 6. 최근 진료 내역 */
+.visit-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.visit-card {
+    padding: 16px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.visit-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.visit-info .date {
+    font-size: 12px;
+    color: var(--text-secondary-color);
+}
+.visit-info .hospital {
+    font-size: 15px;
+    font-weight: 500;
+}
+.visit-info .summary {
+    font-size: 13px;
+}
+.visit-cost {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary-color);
+    white-space: nowrap;
+}
+
+/* 7. 하단 네비게이션 */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--background-color);
+    border-top: 1px solid #eee;
+    padding: 8px 0;
+    z-index: 1000;
+}
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: var(--text-secondary-color);
+}
+.nav-item i {
+    font-size: 20px;
+}
+.nav-item.active {
+    color: var(--primary-color);
+}
