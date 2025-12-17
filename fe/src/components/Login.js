@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import '../styles/Login.css';
 
 function Login() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: ''
   });
 
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
-
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
+  const [serverError, setServerError] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -36,30 +33,36 @@ function Login() {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.email.trim()) {
-      newErrors.email = '이메일을 입력해주세요';
-    } else if (!validateEmail(formData.email)) {
-      newErrors.email = '유효한 이메일을 입력해주세요';
+    if (!formData.username.trim()) {
+      newErrors.username = '이름(닉네임)을 입력해주세요';
     }
 
     if (!formData.password) {
       newErrors.password = '비밀번호를 입력해주세요';
-    } else if (formData.password.length < 6) {
-      newErrors.password = '비밀번호는 최소 6자 이상입니다';
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setServerError('');
 
     if (validateForm()) {
-      // 팝업 대신 바로 메인으로 이동(또는 원하는 경로로 변경)
-      navigate('/main');
-      setFormData({ email: '', password: '' });
-      setTouched({});
+      try {
+        await axios.post('http://localhost:3001/login', {
+          username: formData.username,
+          password: formData.password
+        });
+        navigate('/main');
+      } catch (error) {
+        if (error.response && error.response.data && error.response.data.message) {
+          setServerError(error.response.data.message);
+        } else {
+          setServerError('An unexpected error occurred.');
+        }
+      }
     }
   };
 
@@ -72,20 +75,21 @@ function Login() {
         </div>
 
         <form className="login-form" onSubmit={handleSubmit} noValidate>
+          {serverError && <div className="server-error-message">{serverError}</div>}
           <div className="form-group">
-            <label htmlFor="email" className="form-label">이메일</label>
+            <label htmlFor="username" className="form-label">이름 (닉네임)</label>
             <input
-              type="email"
-              id="email"
-              name="email"
-              className={`form-input ${errors.email && touched.email ? 'error' : ''}`}
-              placeholder="example@domain.com"
-              value={formData.email}
+              type="text"
+              id="username"
+              name="username"
+              className={`form-input ${errors.username && touched.username ? 'error' : ''}`}
+              placeholder="사용하실 닉네임"
+              value={formData.username}
               onChange={handleInputChange}
               onBlur={handleBlur}
             />
-            {errors.email && touched.email && (
-              <span className="error-message">{errors.email}</span>
+            {errors.username && touched.username && (
+              <span className="error-message">{errors.username}</span>
             )}
           </div>
 

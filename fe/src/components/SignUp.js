@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import '../styles/SignUp.css';
 
 function SignUp() {
@@ -14,6 +15,7 @@ function SignUp() {
   const [errors, setErrors] = useState({});
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [touched, setTouched] = useState({});
+  const [serverError, setServerError] = useState('');
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -73,16 +75,24 @@ function SignUp() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setServerError('');
 
     if (validateForm()) {
-      // 성공: 팝업 대신 성공 랜딩 페이지로 이동 (username 전달)
-      navigate('/signup/success', { state: { username: formData.username } });
-      // 폼 초기화
-      setFormData({ username: '', email: '', password: '', confirmPassword: '' });
-      setTouched({});
-      setPasswordMatch(true);
+      try {
+        await axios.post('http://localhost:3001/signup', {
+          username: formData.username,
+          password: formData.password
+        });
+        navigate('/signup/success', { state: { username: formData.username } });
+      } catch (error) {
+        if (error.response && error.response.data && error.response.data.message) {
+          setServerError(error.response.data.message);
+        } else {
+          setServerError('An unexpected error occurred.');
+        }
+      }
     }
   };
 
@@ -95,6 +105,7 @@ function SignUp() {
         </div>
 
         <form className="signup-form" onSubmit={handleSubmit} noValidate>
+          {serverError && <div className="server-error-message">{serverError}</div>}
           <div className="form-group">
             <label htmlFor="username" className="form-label">이름 (닉네임)</label>
             <input

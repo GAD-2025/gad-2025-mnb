@@ -46,7 +46,7 @@ h2 {
     gap: 6px;
     margin-bottom: 16px;
 }
-.location-header i {
+.location-header .icon {
     font-size: 16px;
     color: var(--primary-color);
 }
@@ -71,7 +71,7 @@ h2 {
 .search-bar input::placeholder {
     color: var(--text-secondary-color);
 }
-.search-bar i {
+.search-bar .icon {
     position: absolute;
     right: 16px;
     top: 50%;
@@ -281,7 +281,7 @@ h2 {
     font-size: 10px;
     color: var(--text-secondary-color);
 }
-.nav-item i {
+.nav-item .icon {
     font-size: 20px;
 }
 .nav-item.active {

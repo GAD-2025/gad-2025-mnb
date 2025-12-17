@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const li = document.createElement('li');
             li.innerHTML = `
                 <span class="legend-dot" style="background-color: ${healthData.colors[index].value};"></span>
-                ${label}
+                ${label}: <span class="legend-score">${healthData.scores[index]}</span>
             `;
             ul.appendChild(li);
         });
@@ -121,7 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="visit-card">
                 <div class="visit-info">
                     <span class="date">${visit.date}</span>
-                    <span class="hospital">${visit.hospital} (${visit.doctor})</span>
+                    <span class="hospital">${visit.hospital}</span>
+                    <span class="doctor">${visit.doctor} 선생님</span>
                     <span class="summary">${visit.summary}</span>
                 </div>
                 <div class="visit-cost">${visit.cost}</div>
@@ -138,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         bookingButtons.forEach(button => {
             button.addEventListener('click', (e) => {
                 const hospitalId = e.target.dataset.hospitalId;
-                const hospital = popularHospitals.find(h => h.id == hospitalId);
+                const hospital = popularHospitals.find(h => h.id === hospitalId);
                 alert(`${hospital.name}에 빠른 예약을 진행합니다.`);
                 // 실제 구현 시, 예약 페이지로 이동하는 로직 추가
                 // window.location.href = `/booking?hospitalId=${hospitalId}`;
