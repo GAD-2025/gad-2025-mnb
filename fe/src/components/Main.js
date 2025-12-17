@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import QuickReservationModal from './QuickReservationModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faMagnifyingGlass, faHouseChimney, faBriefcaseMedical, faClipboardList, faComments, faPaw } from '@fortawesome/free-solid-svg-icons';
 import { Chart as ChartJS, RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend } from 'chart.js';
@@ -8,6 +9,19 @@ import '../styles/Main.css';
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
 
 function Main() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedHospital, setSelectedHospital] = useState('');
+
+    const openModal = (hospitalName) => {
+        setSelectedHospital(hospitalName);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedHospital('');
+    };
+
     const healthData = {
         labels: ['수면', '몸무게', '걸음수', '수분', '칼로리'],
         datasets: [
@@ -65,11 +79,16 @@ function Main() {
     ];
     
     const handleQuickBooking = (hospitalName) => {
-        alert(`${hospitalName}에 빠른 예약을 진행합니다.`);
+        openModal(hospitalName);
     };
 
   return (
     <div>
+        <QuickReservationModal 
+            isOpen={isModalOpen} 
+            onClose={closeModal} 
+            hospitalName={selectedHospital} 
+        />
         <div className="container">
             <header className="location-header">
                 <FontAwesomeIcon icon={faLocationDot} className="icon" />
