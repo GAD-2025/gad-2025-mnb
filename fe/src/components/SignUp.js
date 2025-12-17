@@ -84,7 +84,7 @@ function SignUp() {
 
     if (validateForm()) {
       try {
-        await axios.post('http://localhost:3001/signup', {
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/signup`, {
           username: formData.username,
           password: formData.password
         });
