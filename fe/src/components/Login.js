@@ -57,10 +57,19 @@ function Login() {
         });
         navigate('/main');
       } catch (error) {
-        if (error.response && error.response.data && error.response.data.message) {
-          setServerError(error.response.data.message);
+        if (error.response) {
+          if (error.response.status === 404) {
+            // User not found, redirect to signup page with a message
+            navigate('/signup', { 
+              state: { message: '가입되지 않은 사용자입니다. 먼저 회원가입을 진행해주세요.' } 
+            });
+          } else if (error.response.data && error.response.data.message) {
+            // Other server errors (e.g., invalid credentials)
+            setServerError(error.response.data.message);
+          }
         } else {
-          setServerError('An unexpected error occurred.');
+          // Network or other unexpected errors
+          setServerError('로그인 중 예기치 않은 오류가 발생했습니다.');
         }
       }
     }

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/SignUp.css';
 
 function SignUp() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -16,6 +17,8 @@ function SignUp() {
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [touched, setTouched] = useState({});
   const [serverError, setServerError] = useState('');
+
+  const notificationMessage = location.state?.message;
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -105,6 +108,7 @@ function SignUp() {
         </div>
 
         <form className="signup-form" onSubmit={handleSubmit} noValidate>
+          {notificationMessage && <div className="notification-message">{notificationMessage}</div>}
           {serverError && <div className="server-error-message">{serverError}</div>}
           <div className="form-group">
             <label htmlFor="username" className="form-label">이름 (닉네임)</label>
