@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/YOUR_REPO_NAME/static/css/main.a087e5ee.css",
-    "main.js": "/YOUR_REPO_NAME/static/js/main.bdfc0991.js",
-    "static/js/453.1faf56d9.chunk.js": "/YOUR_REPO_NAME/static/js/453.1faf56d9.chunk.js",
-    "index.html": "/YOUR_REPO_NAME/index.html",
-    "main.a087e5ee.css.map": "/YOUR_REPO_NAME/static/css/main.a087e5ee.css.map",
-    "main.bdfc0991.js.map": "/YOUR_REPO_NAME/static/js/main.bdfc0991.js.map",
-    "453.1faf56d9.chunk.js.map": "/YOUR_REPO_NAME/static/js/453.1faf56d9.chunk.js.map"
+    "main.css": "/gad-2025-mnb/static/css/main.a087e5ee.css",
+    "main.js": "/gad-2025-mnb/static/js/main.324e3649.js",
+    "static/js/453.1faf56d9.chunk.js": "/gad-2025-mnb/static/js/453.1faf56d9.chunk.js",
+    "index.html": "/gad-2025-mnb/index.html",
+    "main.a087e5ee.css.map": "/gad-2025-mnb/static/css/main.a087e5ee.css.map",
+    "main.324e3649.js.map": "/gad-2025-mnb/static/js/main.324e3649.js.map",
+    "453.1faf56d9.chunk.js.map": "/gad-2025-mnb/static/js/453.1faf56d9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a087e5ee.css",
-    "static/js/main.bdfc0991.js"
+    "static/js/main.324e3649.js"
   ]
 }
