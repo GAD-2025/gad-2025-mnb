@@ -51,7 +51,7 @@ function Login() {
 
     if (validateForm()) {
       try {
-        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {
+        await axios.post('/login', {
           username: formData.username,
           password: formData.password
         });

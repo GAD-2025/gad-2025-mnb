@@ -84,7 +84,7 @@ function SignUp() {
 
     if (validateForm()) {
       try {
-        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/signup`, {
+        await axios.post('/signup', {
           username: formData.username,
           password: formData.password
         });
