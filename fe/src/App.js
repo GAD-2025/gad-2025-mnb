@@ -8,7 +8,7 @@ import Main from './components/Main';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/gad-2025-mnb">
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
